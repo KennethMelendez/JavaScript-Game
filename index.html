@@ -28,9 +28,10 @@
     =====================================================-->
 
     <script>
-
+    
         //creating the canvas setting the width and height
         let canvas = document.createElement("canvas");
+        let movementSpeed = 10;
         canvas.width = 500;
         canvas.height = 500;
         // in order to talk directly to the canvas we get the context so we can draw on it
@@ -66,9 +67,13 @@
                 this.height=height;
             }
 
+            get currentY(){
+                return this.y;
+            }
+
 
             // the actual rectangle object (will render the object on the screen)
-            rectangle() {
+            displayRectangle() {
                 render2d.fillStyle = this.color;
                 render2d.fillRect(this.x, this.y, this.width, this.height);
             }
@@ -78,9 +83,41 @@
 
 
 
-
+        // instantiate object
         let rectangle = new Rectangle('green', 10, 10, 30, 30);
-        rectangle.rectangle();
+        // calling the object in order to display on the screen
+        rectangle.displayRectangle();
+
+        
+       
+
+        // key press events
+        document.onkeydown = function(e){
+            switch(e.keyCode){
+                case 37:
+                //left
+                //alert('left'); //test
+                let currentY = rectangle.currentY;
+                currentY = currentY + movementSpeed;
+                rectangle.setY = currentY;
+                render2d.clearRect(,,,);// refactor
+                rectangle.displayRectangle();
+
+                break;
+                case 38:
+                //up
+                alert('up');
+                break;
+                case 39:
+                //right
+                alert('right');
+                break;
+                case 40:
+                //down
+                alert('down');
+                break;
+            }
+        };
 
 
         // adding the canvas to the body  
