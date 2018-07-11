@@ -10,7 +10,7 @@
 
 <body>
 
-    
+
 
     <!--=====================================================
 
@@ -19,8 +19,6 @@
     =====================================================-->
 
     <style>
-
-
     </style>
 
     <!--===================================================== 
@@ -31,7 +29,52 @@
 
     <script>
 
-       document.createElement("canvas");
+        //creating the canvas setting the width and height
+        let canvas = document.createElement("canvas");
+        canvas.width = 500;
+        canvas.height = 500;
+        // in order to talk directly to the canvas we get the context so we can draw on it
+        let render2d = canvas.getContext('2d');
+
+
+        //making a class for rectangle object
+        class Rectangle {
+            constructor(color, x, y, width, height) {
+                this.color = color;
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+            }
+            // creating a setter to reassign values for object movement
+            set setColor(color){
+                this.color = color;
+            }
+
+            set setX(x){
+                this.x=x;
+            }
+            // the actual rectangle object (will render the object on the screen)
+            rectangle() {
+                render2d.fillStyle = this.color;
+                render2d.fillRect(this.x, this.y, this.width, this.height);
+            }
+        }
+
+
+
+
+
+
+        let rectangle = new Rectangle('green', 10, 10, 30, 30);
+        rectangle.rectangle();
+
+
+        // adding the canvas to the body  
+        document.body.appendChild(canvas);
+
+
+
 
 
 
