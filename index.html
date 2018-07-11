@@ -25,19 +25,20 @@
         body {
             background: black;
         }
-        #title{
-            color:white;
+
+        #title {
+            color: white;
             font-size: 5rem;
             text-align: center;
             font-family: 'Press Start 2P', cursive;
-            margin-top:3rem;
+            margin-top: 3rem;
         }
 
         canvas {
-    
-            display:block;
+
+            display: block;
             margin: 0 auto;
-            margin-top:2rem;
+            margin-top: 2rem;
             border: 1px solid white;
         }
     </style>
@@ -174,9 +175,16 @@
         // calling the object in order to display on the screen
         rectangle.displayRectangle();
         rectangle.moveRectangle();
+
+
+        //badguy ai
+        let badguy = new Rectangle('green', 40, 40, 70, 70);
+        console.log(badguy.currentX);
+        badguy.displayRectangle();
+
+
         // adding the canvas to the body  
         document.body.appendChild(canvas);
-
 
 
 
