@@ -109,6 +109,7 @@
                 render2d.fillStyle = this.color;
                 render2d.fillRect(this.x, this.y, this.width, this.height);
             }
+
             moveRectangle() {
 
                 function clearRectangle() {
@@ -137,6 +138,7 @@
                             currentY = currentY - movementSpeed;
                             rectangle.setY = currentY;
                             rectangle.displayRectangle();
+                            console.log(currentY);//test
                             break;
                         case 39:
                             //right
@@ -161,12 +163,14 @@
                     }
                 };
 
+
             }
-
-
         }
 
+        //making a class for rectangle enemy object
+        class Enemy extends Rectangle {
 
+        }
 
 
 
@@ -178,9 +182,11 @@
 
 
         //badguy ai
-        let badguy = new Rectangle('green', 40, 40, 70, 70);
-        console.log(badguy.currentX);
+        let badguy = new Enemy('green', 40, 40, 30, 30);
         badguy.displayRectangle();
+
+
+        console.log(badguy.currentX);
 
 
         // adding the canvas to the body  
