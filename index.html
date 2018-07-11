@@ -18,7 +18,28 @@
 
     =====================================================-->
 
+    <div id="title">TITLE</div>
+
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+        body {
+            background: black;
+        }
+        #title{
+            color:white;
+            font-size: 5rem;
+            text-align: center;
+            font-family: 'Press Start 2P', cursive;
+            margin-top:3rem;
+        }
+
+        canvas {
+    
+            display:block;
+            margin: 0 auto;
+            margin-top:2rem;
+            border: 1px solid white;
+        }
     </style>
 
     <!--===================================================== 
@@ -28,6 +49,8 @@
     =====================================================-->
 
     <script>
+        //title code
+
 
         //creating the canvas setting the width and height
         let canvas = document.createElement("canvas");
@@ -147,7 +170,7 @@
 
 
         // instantiate object
-        let rectangle = new Rectangle('green', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2, 30, 30);
+        let rectangle = new Rectangle('white', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2, 30, 30);
         // calling the object in order to display on the screen
         rectangle.displayRectangle();
         rectangle.moveRectangle();
