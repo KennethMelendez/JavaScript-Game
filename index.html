@@ -34,7 +34,7 @@
         let movementSpeed = 20;
         const CANVAS_WIDTH = canvas.width = 500;
         const CANVAS_HEIGHT = canvas.height = 500;
-      
+
         // in order to talk directly to the canvas we get the context so we can draw on it
         let render2d = canvas.getContext('2d');
 
@@ -80,78 +80,77 @@
             get currentHeight() {
                 return this.height;
             }
-
-
             // the actual rectangle object (will render the object on the screen)
             displayRectangle() {
                 render2d.fillStyle = this.color;
                 render2d.fillRect(this.x, this.y, this.width, this.height);
             }
+            moveRectangle() {
+
+                function clearRectangle() {
+                    render2d.clearRect(rectangle.currentX, rectangle.currentY, rectangle.currentWidth, rectangle.currentHeight);
+                }
+
+                // key press events
+                document.onkeydown = function (e) {
+                    switch (e.keyCode) {
+                        case 37:
+                            //left
+                            //alert('left'); //test
+                            let currentX = rectangle.currentX;
+                            //render2d.clearRect(rectangle.currentX,rectangle.currentY,rectangle.currentWidth,rectangle.currentHeight);
+                            clearRectangle();
+                            currentX = currentX - movementSpeed;
+                            rectangle.setX = currentX;
+                            rectangle.displayRectangle();
+                            break;
+                        case 38:
+                            //up
+                            //alert('up');
+                            let currentY = rectangle.currentY;
+                            //render2d.clearRect(rectangle.currentX,rectangle.currentY,rectangle.currentWidth,rectangle.currentHeight);
+                            clearRectangle();
+                            currentY = currentY - movementSpeed;
+                            rectangle.setY = currentY;
+                            rectangle.displayRectangle();
+                            break;
+                        case 39:
+                            //right
+                            //alert('right');
+                            let currentXpos = rectangle.currentX;
+                            //render2d.clearRect(rectangle.currentX,rectangle.currentY,rectangle.currentWidth,rectangle.currentHeight);
+                            clearRectangle();
+                            currentXpos = currentXpos + movementSpeed;
+                            rectangle.setX = currentXpos;
+                            rectangle.displayRectangle();
+                            break;
+                        case 40:
+                            //down
+                            //alert('down');
+                            let currentYpos = rectangle.currentY;
+                            //render2d.clearRect(rectangle.currentX,rectangle.currentY,rectangle.currentWidth,rectangle.currentHeight);
+                            clearRectangle();
+                            currentYpos = currentYpos + movementSpeed;
+                            rectangle.setY = currentYpos;
+                            rectangle.displayRectangle();
+                            break;
+                    }
+                };
+
+            }
 
 
         }
 
 
-        function clearRectangle() {
-            render2d.clearRect(rectangle.currentX, rectangle.currentY, rectangle.currentWidth, rectangle.currentHeight);
-        }
+
 
 
         // instantiate object
-        let rectangle = new Rectangle('green', CANVAS_WIDTH/2, CANVAS_HEIGHT/2, 30 ,30 );
+        let rectangle = new Rectangle('green', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2, 30, 30);
         // calling the object in order to display on the screen
         rectangle.displayRectangle();
-
-
-
-
-        // key press events
-        document.onkeydown = function (e) {
-            switch (e.keyCode) {
-                case 37:
-                    //left
-                    //alert('left'); //test
-                    let currentX = rectangle.currentX;
-                    //render2d.clearRect(rectangle.currentX,rectangle.currentY,rectangle.currentWidth,rectangle.currentHeight);
-                    clearRectangle();
-                    currentX = currentX - movementSpeed;
-                    rectangle.setX = currentX;
-                    rectangle.displayRectangle();
-                    break;
-                case 38:
-                    //up
-                    //alert('up');
-                    let currentY = rectangle.currentY;
-                    //render2d.clearRect(rectangle.currentX,rectangle.currentY,rectangle.currentWidth,rectangle.currentHeight);
-                    clearRectangle();
-                    currentY = currentY - movementSpeed;
-                    rectangle.setY = currentY;
-                    rectangle.displayRectangle();
-                    break;
-                case 39:
-                    //right
-                    //alert('right');
-                    let currentXpos = rectangle.currentX;
-                    //render2d.clearRect(rectangle.currentX,rectangle.currentY,rectangle.currentWidth,rectangle.currentHeight);
-                    clearRectangle();
-                    currentXpos = currentXpos + movementSpeed;
-                    rectangle.setX = currentXpos;
-                    rectangle.displayRectangle();
-                    break;
-                case 40:
-                    //down
-                    //alert('down');
-                    let currentYpos = rectangle.currentY;
-                    //render2d.clearRect(rectangle.currentX,rectangle.currentY,rectangle.currentWidth,rectangle.currentHeight);
-                    clearRectangle();
-                    currentYpos = currentYpos + movementSpeed;
-                    rectangle.setY = currentYpos;
-                    rectangle.displayRectangle();
-                    break;
-            }
-        };
-
-
+        rectangle.moveRectangle();
         // adding the canvas to the body  
         document.body.appendChild(canvas);
 
