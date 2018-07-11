@@ -70,6 +70,15 @@
             get currentY(){
                 return this.y;
             }
+            get currentX(){
+                return this.x;
+            }
+            get currentWidth(){
+                return this.width;
+            }
+            get currentHeight(){
+                return this.height;
+            }
 
 
             // the actual rectangle object (will render the object on the screen)
@@ -100,7 +109,7 @@
                 let currentY = rectangle.currentY;
                 currentY = currentY + movementSpeed;
                 rectangle.setY = currentY;
-                render2d.clearRect(,,,);// refactor
+                render2d.clearRect(rectangle.currentX,rectangle.currentY,rectangle.currentWidth,rectangle.currentHeight);// refactor
                 rectangle.displayRectangle();
 
                 break;
